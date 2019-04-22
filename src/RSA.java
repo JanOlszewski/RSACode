@@ -6,12 +6,12 @@ public class RSA
     private BigInteger n;
     private BigInteger e;
     private BigInteger d;
-    private int beaten;
+    private int bits;
 
-    public RSA(int beaten)
+    public RSA(int bits)
     {
-        this.beaten = beaten;
-        keyGenerator = new KeyGenerator(beaten);
+        this.bits = bits;
+        keyGenerator = new KeyGenerator(bits);
         n = keyGenerator.getN();
         e = keyGenerator.getE();
         d = keyGenerator.getD();
@@ -19,12 +19,12 @@ public class RSA
 
     public BigInteger encrypt(BigInteger x)
     {
-        return MillerRabin.fastPow(x, e, n, beaten);
+        return MillerRabin.fastPow(x, e, n, bits);
     }
 
     public BigInteger decrypt(BigInteger x)
     {
-        return MillerRabin.fastPow(x, d, n, beaten);
+        return MillerRabin.fastPow(x, d, n, bits);
     }
 
     public BigInteger getN() { return n; }

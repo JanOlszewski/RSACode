@@ -11,7 +11,7 @@ public class KeyGenerator
     // private key:
     private BigInteger d;
 
-    public KeyGenerator(int beaten)
+    public KeyGenerator(int bits)
     {
         BigInteger p = BigInteger.ZERO;
         BigInteger q = BigInteger.ZERO;
@@ -19,8 +19,8 @@ public class KeyGenerator
 
         while (b)
         {
-            p = PrimeNumberGenerator.generatePrimeNumber(beaten);
-            q = PrimeNumberGenerator.generatePrimeNumber(beaten);
+            p = PrimeNumberGenerator.generatePrimeNumber(bits);
+            q = PrimeNumberGenerator.generatePrimeNumber(bits);
             if(!(p.equals(q))) { b = false; }
         }
 
